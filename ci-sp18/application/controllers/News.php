@@ -15,13 +15,14 @@ class News extends CI_Controller {
         {
         $data['news'] = $this->news_model->get_news();
         //$data['title'] = 'News archive';
-        $this->config->set_item('title','News Title');
+        $this->config->set_item('title','News');
 
         $this->load->view('news/index', $data);
         }//end of index
 
         public function view($slug = NULL)
         {
+            $this->config->set_item('title','News Item');
             $data['news_item'] = $this->news_model->get_news($slug);
 
             if (empty($data['news_item']))
@@ -36,6 +37,7 @@ class News extends CI_Controller {
     
         public function create()
         {
+            $this->config->set_item('title','Create News');
             $this->load->helper('form');
             $this->load->library('form_validation');
 
